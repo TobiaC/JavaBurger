@@ -1,11 +1,11 @@
 
 class Burgers {
 
-    static String meatBurgers[] = {" 1 SIMPLE BURGER", " 2 MEDIUM BURGER", " 3 WORKER BURGER"};
+    static String meatBurgersNames[] = {" 1 SIMPLE BURGER", " 2 MEDIUM BURGER", " 3 WORKER BURGER"};
     private String ingredients[] = {" hamburger", " cheese", " salad", " egg", " bacon", " tomato"};
     static String meatBurgersIngredients[] = {makeSimpleBurger(), makeMediumBurger(), makeWorkerBurger()};
 
-    static String veggyBurgers[] = {" 1 SIMPLE VEG BURGER", " 2 MEDIUM VEG BURGER", " 3 WORKER VEG BURGER"};
+    static String veggyBurgersNames[] = {" 1 SIMPLE VEG BURGER", " 2 MEDIUM VEG BURGER", " 3 WORKER VEG BURGER"};
     private String vegingredients[] = {" cheese", " salad", " egg", " tomato", " aubergine", " zucchini"};
     static String veggyBurgersIngredients[] = {makeSimpleVegBurger(), makeMediumVegBurger(), makeWorkerVegBurger()};
 
