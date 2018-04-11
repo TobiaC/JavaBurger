@@ -27,8 +27,8 @@ class MakeOrder {
 
                 System.out.println("Choose from our fucking meat burgers menu");
 
-                for (int i = 0; i < Burgers.meatBurgers.length; i++) {
-                    String burger = Burgers.meatBurgers[i] + "\n " + Burgers.meatBurgersIngredients[i];
+                for (int i = 0; i < Burgers.meatBurgersNames.length; i++) {
+                    String burger = Burgers.meatBurgersNames[i] + "\n " + Burgers.meatBurgersIngredients[i];
                     System.out.println(burger);
                 }
 
@@ -38,11 +38,10 @@ class MakeOrder {
                 break;
 
             case "2":
-                String[] veggyBurgersIngredients = Burger.veggyBurgersIngredients;
                 System.out.println("Princess, choose from our fucking veggy burgers menu");
-                String[] veggyBurgers = Burger.veggyBurgers;
-                for (int i = 0; i < veggyBurgers.length; i++) {
-                    String burger = veggyBurgers[i] + "\n " + veggyBurgersIngredients[i];
+
+                for (int i = 0; i < Burgers.veggyBurgersNames.length; i++) {
+                    String burger = Burgers.veggyBurgersNames[i] + "\n " + Burgers.veggyBurgersIngredients[i];
                     System.out.println(burger);
                 }
 

@@ -1,12 +1,12 @@
 
 class Burgers {
 
-    static String meatBurgers[] = {" 1 SIMPLE BURGER", " 2 MEDIUM BURGER", " 3 WORKER BURGER"};
-    private String ingredients[] = {" hamburger", " cheese", " salad", " egg", " bacon", " tomato"};
+    static String meatBurgersNames[] = {" 1 SIMPLE BURGER", " 2 MEDIUM BURGER", " 3 WORKER BURGER"};
+    static private String ingredients[] = {" hamburger", " cheese", " salad", " egg", " bacon", " tomato"};
     static String meatBurgersIngredients[] = {makeSimpleBurger(), makeMediumBurger(), makeWorkerBurger()};
 
-    static String veggyBurgers[] = {" 1 SIMPLE VEG BURGER", " 2 MEDIUM VEG BURGER", " 3 WORKER VEG BURGER"};
-    private String vegingredients[] = {" cheese", " salad", " egg", " tomato", " aubergine", " zucchini"};
+    static String veggyBurgersNames[] = {" 1 SIMPLE VEG BURGER", " 2 MEDIUM VEG BURGER", " 3 WORKER VEG BURGER"};
+    static private String vegingredients[] = {" cheese", " salad", " egg", " tomato", " aubergine", " zucchini"};
     static String veggyBurgersIngredients[] = {makeSimpleVegBurger(), makeMediumVegBurger(), makeWorkerVegBurger()};
 
     private int simpleBurgerQuantity;
@@ -26,27 +26,27 @@ class Burgers {
     int totalVegAmount;
 
 
-    private String makeSimpleBurger (){
+    static private String makeSimpleBurger (){
         return ingredients[0] + ingredients[1];
     }
 
-    private String makeMediumBurger() {
+    static private String makeMediumBurger() {
         return ingredients[0] + ingredients[1] + ingredients[2];
     }
 
-    private String makeWorkerBurger() {
+    static private String makeWorkerBurger() {
         return ingredients[0] + ingredients[1] + ingredients[2] + ingredients[3] + ingredients[5];
     }
 
-    private String makeSimpleVegBurger (){
+    static private String makeSimpleVegBurger (){
         return vegingredients[0] + vegingredients[1];
     }
 
-    private String makeMediumVegBurger() {
+    static private String makeMediumVegBurger() {
         return vegingredients[0] + vegingredients[1] + vegingredients[2];
     }
 
-    private String makeWorkerVegBurger() {
+    static private String makeWorkerVegBurger() {
         return vegingredients[0] + vegingredients[1] + vegingredients[2] + vegingredients[3] + vegingredients[5];
     }
 
