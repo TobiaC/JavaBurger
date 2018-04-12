@@ -80,23 +80,16 @@ class MakeOrder {
                 finishBurgerOrder();
                 break;
         }
+        orderDrink();
     }
 
-    void orderDrink() throws IOException {
+    private void orderDrink() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] newDrink = drink.drinks;
         System.out.println("Would you like a fucking drink?");
         String order = br.readLine().toLowerCase();
         switch (order){
             case "yes":
-                System.out.println("Select a drink");
-                for(String drink: newDrink ){
-                    System.out.println(drink);
-                }
-                order = br.readLine().toLowerCase();
-                String drinkChosen = drink.choseDrink(order);
-                System.out.println(drinkChosen);
-                finishDrinkOrder();
+                choseDrink();
                 break;
 
             case "no":
@@ -111,13 +104,25 @@ class MakeOrder {
         //finishDrinkOrder();
     }
 
+    private void choseDrink() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Select a drink");
+        for(String drink: drink.drinks){
+            System.out.println(drink);
+        }
+        String order = br.readLine().toLowerCase();
+        String drinkChosen = drink.choseDrink(order);
+        System.out.println(drinkChosen);
+        finishDrinkOrder();
+    }
+
     private void finishDrinkOrder() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Do you wanna another fucking drink?");
         String order = br.readLine().toLowerCase();
         switch (order) {
             case "yes":
-                orderDrink();
+                choseDrink();
                 break;
 
             case "no":

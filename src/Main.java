@@ -10,7 +10,7 @@ class Main {
         System.out.println("Insert your fucking name");
         makeOrder.welcomeMessage();
         makeOrder.orderBurger();
-        makeOrder.orderDrink();
+        //makeOrder.orderDrink();
         System.out.println("Thank you, see ya!");
         }
     }//class
