@@ -16,7 +16,7 @@ class Drinks {
     private int lemonPepsiTotal;
     private int icedLemonTeaTotal;
     private int orangeJuiceTotal;
-    int totalDrinkAmount;
+    private int totalDrinkAmount;
 
     /**
      *
@@ -83,10 +83,10 @@ class Drinks {
         }
     }
 
-    String drinkOrderSummary () {
-        String summary = "DRINKS";
+    int drinkOrderSummary () {
+        //String summary = "DRINKS";
         totalDrinkAmount = naturalWaterTotal + sparklingWaterTotal + cokeTotal + dietCokeTotal + lemonPepsiTotal + icedLemonTeaTotal + orangeJuiceTotal;
-        return summary;
+        return totalDrinkAmount;
     }
 
     }//class

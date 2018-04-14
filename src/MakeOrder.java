@@ -126,8 +126,8 @@ class MakeOrder {
                 break;
 
             case "no":
-                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.totalDrinkAmount;
-                System.out.println("The total amount of your order is: " + total + "$");
+//                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.totalDrinkAmount;
+//                System.out.println("The total amount of your order is: " + total + "$");
                 finishOrder();
                 break;
 
@@ -147,7 +147,7 @@ class MakeOrder {
                 break;
 
             case "no":
-                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.totalDrinkAmount;
+                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
                 System.out.println("The total amount of your order is: " + total + "$");
                 break;
 
