@@ -65,7 +65,7 @@ class Burgers {
                 price = 5;
                 simpleBurgerQuantity += 1;
                 simpleBurgerTotal = simpleBurgerQuantity*price;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
             case "2":
@@ -73,7 +73,7 @@ class Burgers {
                 price = 8;
                 mediumBurgerQuantity += 1;
                 mediumBurgerTotal = mediumBurgerQuantity*price;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
             case "3":
@@ -81,7 +81,7 @@ class Burgers {
                 price = 10;
                 workerBurgerQuantity += 1;
                 workerBurgerTotal = workerBurgerQuantity*price;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
             default:
@@ -105,7 +105,7 @@ class Burgers {
             summary += "\nNo meat burgers";
         }
         totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-        return summary;
+        return summary + "\n";
     }
 
     /**
@@ -121,7 +121,7 @@ class Burgers {
             case "1":
                 //burgerIngredientsInfo = "This burger is made with: " + makeSimpleVegBurger();
                 price = 3;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 simpleVegBurgerQuantity += 1;
                 simpleVegBurgerTotal = simpleVegBurgerQuantity*price;
                 return burgerIngredientsInfo;
@@ -130,7 +130,7 @@ class Burgers {
             case "2":
                 //burgerIngredientsInfo = "This burger is made with: " + makeMediumVegBurger();
                 price = 6;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 mediumVegBurgerQuantity += 1;
                 mediumVegBurgerTotal = mediumVegBurgerQuantity*price;
                 return burgerIngredientsInfo;
@@ -139,7 +139,7 @@ class Burgers {
             case "3":
                 //burgerIngredientsInfo = "This burger is made with: " + makeWorkerVegBurger();
                 price = 8;
-                burgerIngredientsInfo = "\nThe price is: " + price + "$";
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 workerVegBurgerQuantity += 1;
                 workerVegBurgerTotal = workerVegBurgerQuantity*price;
                 return burgerIngredientsInfo;
@@ -164,10 +164,13 @@ class Burgers {
             summary += "\nNo veg burgers";
         }
         totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
-        return summary;
+        return summary+ "\n";
 
     }
 
+int burgerQuantityOfSimpleBurgers(){            //we need this method to apply the discount
 
+        return simpleBurgerQuantity + simpleVegBurgerQuantity;
+}
 
 }//class

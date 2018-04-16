@@ -1,11 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Calendar;
 
 class MakeOrder {
 
     private static Burgers Burger = new Burgers();
     private static Drinks drink = new Drinks();
+    private int discount=0;
 
     void welcomeMessage() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,7 +27,7 @@ class MakeOrder {
         switch (order) {
             case "1":
 
-                System.out.println("Choose from our fucking meat burgers menu");
+                System.out.println("Choose from our fucking meat burgers menu\n");
 
                 for (int i = 0; i < Burgers.meatBurgersNames.length; i++) {
                     String burger = Burgers.meatBurgersNames[i] + "\n " + Burgers.meatBurgersIngredients[i];
@@ -38,7 +40,7 @@ class MakeOrder {
                 break;
 
             case "2":
-                System.out.println("Princess, choose from our fucking veggy burgers menu");
+                System.out.println("Princess, choose from our fucking veggy burgers menu\n");
 
                 for (int i = 0; i < Burgers.veggyBurgersNames.length; i++) {
                     String burger = Burgers.veggyBurgersNames[i] + "\n " + Burgers.veggyBurgersIngredients[i];
@@ -70,17 +72,18 @@ class MakeOrder {
             case "no":
                 String orderSummaryVeg = Burger.orderSummaryVeg();
                 String orderSummaryNormal = Burger.orderSummaryNormal();
-                String summary = "Your order is:" + "\n" + orderSummaryVeg + "\n" + orderSummaryNormal;
+                String summary = "Your order is:\n" + "\n" + orderSummaryVeg + "\n" + orderSummaryNormal;
                 System.out.println(summary);
                 int total = Burger.totalVegAmount + Burger.totalNormalAmount;
-                System.out.println("The total amount of your order is: " + total + "$");
+                System.out.println("The current total amount of your order is: " + total + "$");
+                orderDrink();
                 break;
 
             default: System.out.println("If you don't speak english go to Australia and jump with the fucking kangaroos!");
                 finishBurgerOrder();
                 break;
         }
-        orderDrink();
+
     }
 
     private void orderDrink() throws IOException {
@@ -98,6 +101,7 @@ class MakeOrder {
 
             default:
                 System.out.println("Can you tell me when are you gonna talk in fucking english?! I can't understand you!");
+                orderDrink();
 
         }
         drink.drinkOrderSummary();
@@ -147,8 +151,21 @@ class MakeOrder {
                 break;
 
             case "no":
-                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
-                System.out.println("The total amount of your order is: " + total + "$");
+
+
+                Calendar calendar = Calendar.getInstance();
+                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+                if (dayOfWeek==2) {
+                     discount = Burger.burgerQuantityOfSimpleBurgers() * 2;
+                     System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
+                     System.out.println("Your total discount is: " + discount +"$");
+
+                }
+
+                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary() - discount;
+
+                System.out.println("The final amount of your order is: " + total + "$");
                 break;
 
             default: System.out.println("If you don't speak english go to Australia and jump with the fucking kangaroos!");

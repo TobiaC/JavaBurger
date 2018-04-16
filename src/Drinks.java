@@ -31,14 +31,14 @@ class Drinks {
                 price = 3;
                 naturalWaterQuantity += 1;
                 naturalWaterTotal = naturalWaterQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             case "2":
                 price = 8;
                 sparklingWaterQuantity += 1;
                 sparklingWaterTotal = sparklingWaterQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             case "3":
@@ -46,20 +46,20 @@ class Drinks {
                 price = 10;
                 cokeQuantity += 1;
                 cokeTotal = cokeQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
             case "4":
                 price = 3;
                 dietCokeQuantity += 1;
                 dietCokeTotal = dietCokeQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             case "5":
                 price = 8;
                 lemonPepsiQuantity += 1;
                 lemonPepsiTotal = lemonPepsiQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             case "6":
@@ -67,7 +67,7 @@ class Drinks {
                 price = 10;
                 icedLemonTeaQuantity += 1;
                 icedLemonTeaTotal = icedLemonTeaQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             case "7":
@@ -75,7 +75,7 @@ class Drinks {
                 price = 10;
                 orangeJuiceQuantity += 1;
                 orangeJuiceTotal = orangeJuiceQuantity*price;
-                drinkInfo = "\nThe price is: " + price + "$";
+                drinkInfo = "\nThe price of the single drink is: " + price + "$";
                 return drinkInfo;
 
             default:
