@@ -8,21 +8,21 @@ class MakeOrder {
     private static Burgers Burger = new Burgers();
     private static Drinks drink = new Drinks();
     private int discount=0;
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     void welcomeMessage() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String nameInserted = br.readLine();
         System.out.println("Hi " + nameInserted + ", and welcome to FJavaBurger!");
     }
 
 
-
-    //choose a burger from the menu
+    /**
+     *
+     * @throws IOException allows String input
+     */
 
    void orderBurger() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nFrom which menu would you like to order? Press 1 for meat burgers or 2 for veggy burgers");
-
         String order = br.readLine();
         switch (order) {
             case "1":
@@ -59,9 +59,11 @@ class MakeOrder {
         finishBurgerOrder();
     }
 
-
+    /**
+     *
+     * @throws IOException allows String input
+     */
    private void finishBurgerOrder() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Would you like another fucking burger?");
         String order = br.readLine().toLowerCase();
         switch (order) {
@@ -83,11 +85,13 @@ class MakeOrder {
                 finishBurgerOrder();
                 break;
         }
-
     }
 
+    /**
+     *
+     * @throws IOException allows String input
+     */
     private void orderDrink() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Would you like a fucking drink?");
         String order = br.readLine().toLowerCase();
         switch (order){
@@ -102,14 +106,15 @@ class MakeOrder {
             default:
                 System.out.println("Can you tell me when are you gonna talk in fucking english?! I can't understand you!");
                 orderDrink();
-
         }
         drink.drinkOrderSummary();
-        //finishDrinkOrder();
     }
 
+    /**
+     *
+     * @throws IOException allows String input
+     */
     private void choseDrink() throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Select a drink");
         for(String drink: drink.drinks){
             System.out.println(drink);
@@ -120,8 +125,11 @@ class MakeOrder {
         finishDrinkOrder();
     }
 
+    /**
+     *
+     * @throws IOException allows String input
+     */
     private void finishDrinkOrder() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Do you wanna another fucking drink?");
         String order = br.readLine().toLowerCase();
         switch (order) {
@@ -141,8 +149,11 @@ class MakeOrder {
         }
     }
 
+    /**
+     *
+     * @throws IOException allows String input
+     */
    private void finishOrder() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Would you like something else? Actually we have nothing more at the moment");
         String order = br.readLine().toLowerCase();
         switch (order) {
@@ -152,7 +163,6 @@ class MakeOrder {
 
             case "no":
 
-
                 Calendar calendar = Calendar.getInstance();
                 int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
@@ -160,7 +170,6 @@ class MakeOrder {
                      discount = Burger.burgerQuantityOfSimpleBurgers() * 2;
                      System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
                      System.out.println("Your total discount is: " + discount +"$");
-
                 }
 
                 int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary() - discount;

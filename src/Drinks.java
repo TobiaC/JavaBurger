@@ -16,12 +16,12 @@ class Drinks {
     private int lemonPepsiTotal;
     private int icedLemonTeaTotal;
     private int orangeJuiceTotal;
-    private int totalDrinkAmount;
+    //private int totalDrinkAmount;
 
     /**
      *
      * @param drink chosen by the customer
-     * @return drink chosen and info
+     * @return String: drink chosen and info
      */
     String choseDrink(String drink) {
         int price;
@@ -83,9 +83,12 @@ class Drinks {
         }
     }
 
+    /**
+     *
+     * @return int: total drink amount
+     */
     int drinkOrderSummary () {
-        //String summary = "DRINKS";
-        totalDrinkAmount = naturalWaterTotal + sparklingWaterTotal + cokeTotal + dietCokeTotal + lemonPepsiTotal + icedLemonTeaTotal + orangeJuiceTotal;
+        int totalDrinkAmount = naturalWaterTotal + sparklingWaterTotal + cokeTotal + dietCokeTotal + lemonPepsiTotal + icedLemonTeaTotal + orangeJuiceTotal;
         return totalDrinkAmount;
     }
 

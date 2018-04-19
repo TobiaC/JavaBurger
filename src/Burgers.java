@@ -25,11 +25,18 @@ class Burgers {
     private int workerVegBurgerTotal;
     int totalVegAmount;
 
-
+    /**
+     *
+     * @return String: ingredients of the burger
+     */
     static private String makeSimpleBurger (){
         return ingredients[0] + ingredients[1];
     }
 
+    /**
+     *
+     * @return String: ingredients of the burger
+     */
     static private String makeMediumBurger() {
         return ingredients[0] + ingredients[1] + ingredients[2];
     }
@@ -38,14 +45,26 @@ class Burgers {
         return ingredients[0] + ingredients[1] + ingredients[2] + ingredients[3] + ingredients[5];
     }
 
+    /**
+     *
+     * @return String: ingredients of the burger
+     */
     static private String makeSimpleVegBurger (){
         return vegingredients[0] + vegingredients[1];
     }
 
+    /**
+     *
+     * @return String: ingredients of the burger
+     */
     static private String makeMediumVegBurger() {
         return vegingredients[0] + vegingredients[1] + vegingredients[2];
     }
 
+    /**
+     *
+     * @return String: ingredients of the burger
+     */
     static private String makeWorkerVegBurger() {
         return vegingredients[0] + vegingredients[1] + vegingredients[2] + vegingredients[3] + vegingredients[5];
     }
@@ -54,7 +73,7 @@ class Burgers {
     /**
      *
      * @param burger the burger that is chosen by the customer
-     * @return the order summary
+     * @return String: the order summary
      */
 
     String choseMeatBurger(String burger) {
@@ -90,6 +109,10 @@ class Burgers {
     }
 
 
+    /**
+     *
+     * @return String: order summary of the normal order
+     */
     String orderSummaryNormal (){
         String summary = "MEAT BURGERS";
         if (simpleBurgerQuantity > 0){
@@ -110,8 +133,8 @@ class Burgers {
 
     /**
      *
-     * @param burger the burger that is chosen by the customer
-     * @return the burger info
+     * @param burger  String: the burger that is chosen by the customer
+     * @return String: the burger info
      */
 
     String choseVeggyBurger(String burger) {
@@ -149,6 +172,10 @@ class Burgers {
         }
     }
 
+    /**
+     *
+     * @return String: order summary of the veg order
+     */
     String orderSummaryVeg (){
         String summary = "VEGGY BURGERS";
         if (simpleVegBurgerQuantity  > 0) {
@@ -168,8 +195,12 @@ class Burgers {
 
     }
 
-int burgerQuantityOfSimpleBurgers(){            //we need this method to apply the discount
+    /**
+     *
+     * @return int: total burger quantity
+     */
 
+    int burgerQuantityOfSimpleBurgers(){            //we need this method to apply the discount
         return simpleBurgerQuantity + simpleVegBurgerQuantity;
 }
 
