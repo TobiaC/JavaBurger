@@ -9,6 +9,7 @@ class MakeOrder {
     private static Drinks drink = new Drinks();
     private int discount=0;
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private int total;
 
     void welcomeMessage() throws IOException {
         String nameInserted = br.readLine();
@@ -37,6 +38,9 @@ class MakeOrder {
                 order = br.readLine().toLowerCase();
                 String burgerChosen = Burger.choseMeatBurger(order);
                 System.out.println(burgerChosen);
+
+                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+                System.out.println("The current amount of your order is: " + total + "$");
                 break;
 
             case "2":
@@ -50,6 +54,8 @@ class MakeOrder {
                 order = br.readLine().toLowerCase();
                 burgerChosen = Burger.choseVeggyBurger(order);
                 System.out.println(burgerChosen);
+                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+                System.out.println("The current amount of your order is: " + total + "$");
                 break;
 
             default:
@@ -100,6 +106,8 @@ class MakeOrder {
                 break;
 
             case "no":
+                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+                System.out.println("The current amount of your order is: " + total + "$");
                 finishOrder();
                 break;
 
@@ -122,6 +130,9 @@ class MakeOrder {
         String order = br.readLine().toLowerCase();
         String drinkChosen = drink.choseDrink(order);
         System.out.println(drinkChosen);
+
+        total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+        System.out.println("The current amount of your order is: " + total + "$");
         finishDrinkOrder();
     }
 
@@ -166,13 +177,13 @@ class MakeOrder {
                 Calendar calendar = Calendar.getInstance();
                 int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
-                if (dayOfWeek==2) {
+                if (dayOfWeek==5) {
                      discount = Burger.burgerQuantityOfSimpleBurgers() * 2;
                      System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
                      System.out.println("Your total discount is: " + discount +"$");
                 }
 
-                int total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary() - discount;
+                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary() - discount;
 
                 System.out.println("The final amount of your order is: " + total + "$");
                 break;

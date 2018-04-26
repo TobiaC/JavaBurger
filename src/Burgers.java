@@ -74,6 +74,10 @@ class Burgers {
      *
      * @param burger the burger that is chosen by the customer
      * @return String: the order summary
+     * MODIFY totalNormalAmount: update the current total price
+     * MODIFY simpleBurgerQuantity
+     *        mediumBurgerQuantity
+     *        workerBurgerQuantity: update the quantity of each burger
      */
 
     String choseMeatBurger(String burger) {
@@ -84,6 +88,7 @@ class Burgers {
                 price = 5;
                 simpleBurgerQuantity += 1;
                 simpleBurgerTotal = simpleBurgerQuantity*price;
+                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
@@ -92,6 +97,7 @@ class Burgers {
                 price = 8;
                 mediumBurgerQuantity += 1;
                 mediumBurgerTotal = mediumBurgerQuantity*price;
+                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
@@ -100,6 +106,7 @@ class Burgers {
                 price = 10;
                 workerBurgerQuantity += 1;
                 workerBurgerTotal = workerBurgerQuantity*price;
+                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 return burgerIngredientsInfo;
 
@@ -112,6 +119,7 @@ class Burgers {
     /**
      *
      * @return String: order summary of the normal order
+     * MODIFY totalNormalAmount: update the current total amount
      */
     String orderSummaryNormal (){
         String summary = "MEAT BURGERS";
@@ -135,6 +143,10 @@ class Burgers {
      *
      * @param burger  String: the burger that is chosen by the customer
      * @return String: the burger info
+     * MODIFY totalVegAmount: update the current total price
+     * MODIFY simpleVegBurgerQuantity
+     *        mediumVegBurgerQuantity
+     *        workerVegBurgerQuantity: update the quantity of each burger
      */
 
     String choseVeggyBurger(String burger) {
@@ -147,6 +159,7 @@ class Burgers {
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 simpleVegBurgerQuantity += 1;
                 simpleVegBurgerTotal = simpleVegBurgerQuantity*price;
+                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
                 return burgerIngredientsInfo;
 
 
@@ -156,6 +169,7 @@ class Burgers {
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 mediumVegBurgerQuantity += 1;
                 mediumVegBurgerTotal = mediumVegBurgerQuantity*price;
+                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
                 return burgerIngredientsInfo;
 
 
@@ -165,6 +179,7 @@ class Burgers {
                 burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
                 workerVegBurgerQuantity += 1;
                 workerVegBurgerTotal = workerVegBurgerQuantity*price;
+                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
                 return burgerIngredientsInfo;
 
             default:
@@ -175,6 +190,7 @@ class Burgers {
     /**
      *
      * @return String: order summary of the veg order
+     * MODIFY totalVegAmount: update the current total amount
      */
     String orderSummaryVeg (){
         String summary = "VEGGY BURGERS";
