@@ -12,58 +12,12 @@ class MakeOrder {
     private int total;
 
     void welcomeMessage() throws IOException {
+        System.out.println("Insert your fucking name");
         String nameInserted = br.readLine();
         System.out.println("Hi " + nameInserted + ", and welcome to FJavaBurger!");
     }
 
 
-    /**
-     *
-     * @throws IOException allows String input
-     */
-
-   void orderBurger() throws IOException {
-        System.out.println("\nFrom which menu would you like to order? Press 1 for meat burgers or 2 for veggy burgers");
-        String order = br.readLine();
-        switch (order) {
-            case "1":
-
-                System.out.println("Choose from our fucking meat burgers menu\n");
-
-                for (int i = 0; i < Burgers.meatBurgersNames.length; i++) {
-                    String burger = Burgers.meatBurgersNames[i] + "\n " + Burgers.meatBurgersIngredients[i];
-                    System.out.println(burger);
-                }
-
-                order = br.readLine().toLowerCase();
-                String burgerChosen = Burger.choseMeatBurger(order);
-                System.out.println(burgerChosen);
-
-                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
-                System.out.println("The current amount of your order is: " + total + "$");
-                break;
-
-            case "2":
-                System.out.println("Princess, choose from our fucking veggy burgers menu\n");
-
-                for (int i = 0; i < Burgers.veggyBurgersNames.length; i++) {
-                    String burger = Burgers.veggyBurgersNames[i] + "\n " + Burgers.veggyBurgersIngredients[i];
-                    System.out.println(burger);
-                }
-
-                order = br.readLine().toLowerCase();
-                burgerChosen = Burger.choseVeggyBurger(order);
-                System.out.println(burgerChosen);
-                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
-                System.out.println("The current amount of your order is: " + total + "$");
-                break;
-
-            default:
-                System.out.println("You fucker you typed incorrectly! Try again!");
-        }
-
-        finishBurgerOrder();
-    }
 
     /**
      *
@@ -74,7 +28,7 @@ class MakeOrder {
         String order = br.readLine().toLowerCase();
         switch (order) {
             case "yes":
-                orderBurger();
+               // orderBurger();
                 break;
 
             case "no":
@@ -169,7 +123,7 @@ class MakeOrder {
         String order = br.readLine().toLowerCase();
         switch (order) {
             case "yes":
-                orderBurger();
+                //orderBurger();
                 break;
 
             case "no":
