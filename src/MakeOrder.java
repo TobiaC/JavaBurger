@@ -5,17 +5,29 @@ import java.util.Calendar;
 
 class MakeOrder {
 
-    private static Burgers Burger = new Burgers();
+    private static Burgers burger = new Burgers();
     private static Drinks drink = new Drinks();
     private int discount=0;
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private int total;
 
-    void welcomeMessage() throws IOException {
-        System.out.println("Insert your fucking name");
-        String nameInserted = br.readLine();
-        System.out.println("Hi " + nameInserted + ", and welcome to FJavaBurger!");
-    }
+    private int simpleBurgerQuantity;
+    private int mediumBurgerQuantity;
+    private int workerBurgerQuantity;
+    private int simpleBurgerTotal;
+    private int mediumBurgerTotal;
+    private int workerBurgerTotal;
+    int totalNormalAmount;
+
+    private int simpleVegBurgerQuantity;
+    private int mediumVegBurgerQuantity;
+    private int workerVegBurgerQuantity;
+    private int simpleVegBurgerTotal;
+    private int mediumVegBurgerTotal;
+    private int workerVegBurgerTotal;
+    int totalVegAmount;
+    int price;
+
 
 
 
@@ -32,11 +44,11 @@ class MakeOrder {
                 break;
 
             case "no":
-                String orderSummaryVeg = Burger.orderSummaryVeg();
-                String orderSummaryNormal = Burger.orderSummaryNormal();
+                String orderSummaryVeg = burger.orderSummaryVeg();
+                String orderSummaryNormal = burger.orderSummaryNormal();
                 String summary = "Your order is:\n" + "\n" + orderSummaryVeg + "\n" + orderSummaryNormal;
                 System.out.println(summary);
-                int total = Burger.totalVegAmount + Burger.totalNormalAmount;
+                int total = totalVegAmount + totalNormalAmount;
                 System.out.println("The current total amount of your order is: " + total + "$");
                 orderDrink();
                 break;
@@ -47,6 +59,56 @@ class MakeOrder {
         }
     }
 
+    void showMeatBurgers(){
+
+        for (int i = 0; i < burger.meatBurgersNames.length; i++) {
+            String burgerMenu = burger.meatBurgersNames[i] + "\n " + burger.meatBurgersIngredients[i];
+            System.out.println(burgerMenu);
+        }
+    }
+
+    void showVeggyBurgers(){
+
+        for (int i = 0; i < burger.veggyBurgersNames.length; i++) {
+            String burgerMenu = burger.veggyBurgersNames[i] + "\n " + burger.veggyBurgersIngredients[i];
+            System.out.println(burgerMenu);
+        }
+    }
+
+    void simpleBurgerChoosen(){
+
+        String burgerIngredientsInfo;
+        price = 5;
+        simpleBurgerQuantity += 1;
+        simpleBurgerTotal = simpleBurgerQuantity*price;
+        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
+        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+        System.out.println(burgerIngredientsInfo);
+    }
+
+    void mediumBurgerChoosen(){
+
+        String burgerIngredientsInfo;
+        price = 8;
+        mediumBurgerQuantity += 1;
+        mediumBurgerTotal = mediumBurgerQuantity*price;
+        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
+        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+        System.out.println(burgerIngredientsInfo);
+
+    }
+
+    void workerBurgerChoosen(){
+
+        String burgerIngredientsInfo;
+        price = 10;
+        workerBurgerQuantity += 1;
+        workerBurgerTotal = workerBurgerQuantity*price;
+        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
+        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+        System.out.println(burgerIngredientsInfo);
+
+    }
     /**
      *
      * @throws IOException allows String input
@@ -60,7 +122,7 @@ class MakeOrder {
                 break;
 
             case "no":
-                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+                total = totalVegAmount + totalNormalAmount + drink.drinkOrderSummary();
                 System.out.println("The current amount of your order is: " + total + "$");
                 finishOrder();
                 break;
@@ -85,7 +147,7 @@ class MakeOrder {
         String drinkChosen = drink.choseDrink(order);
         System.out.println(drinkChosen);
 
-        total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary();
+        total = totalVegAmount + totalNormalAmount + drink.drinkOrderSummary();
         System.out.println("The current amount of your order is: " + total + "$");
         finishDrinkOrder();
     }
@@ -132,12 +194,12 @@ class MakeOrder {
                 int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
                 if (dayOfWeek==5) {
-                     discount = Burger.burgerQuantityOfSimpleBurgers() * 2;
+                     discount = burger.burgerQuantityOfSimpleBurgers() * 2;
                      System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
                      System.out.println("Your total discount is: " + discount +"$");
                 }
 
-                total = Burger.totalVegAmount + Burger.totalNormalAmount + drink.drinkOrderSummary() - discount;
+                total = totalVegAmount + totalNormalAmount + drink.drinkOrderSummary() - discount;
 
                 System.out.println("The final amount of your order is: " + total + "$");
                 break;

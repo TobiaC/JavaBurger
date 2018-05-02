@@ -13,22 +13,6 @@ class Burgers {
     static private String vegingredients[] = {" cheese", " salad", " egg", " tomato", " aubergine", " zucchini"};
     static String veggyBurgersIngredients[] = {makeSimpleVegBurger(), makeMediumVegBurger(), makeWorkerVegBurger()};
 
-    private int simpleBurgerQuantity;
-    private int mediumBurgerQuantity;
-    private int workerBurgerQuantity;
-    private int simpleBurgerTotal;
-    private int mediumBurgerTotal;
-    private int workerBurgerTotal;
-    int totalNormalAmount;
-
-    private int simpleVegBurgerQuantity;
-    private int mediumVegBurgerQuantity;
-    private int workerVegBurgerQuantity;
-    private int simpleVegBurgerTotal;
-    private int mediumVegBurgerTotal;
-    private int workerVegBurgerTotal;
-    int totalVegAmount;
-
     /**
      *
      * @return String: ingredients of the burger
@@ -84,54 +68,9 @@ class Burgers {
      *        workerBurgerQuantity: update the quantity of each burger
      */
 
-    void chooseMeatBurger() throws IOException {
-        for (int i = 0; i < Burgers.meatBurgersNames.length; i++) {
-            String burgerMenu = Burgers.meatBurgersNames[i] + "\n " + Burgers.meatBurgersIngredients[i];
-            System.out.println(burgerMenu);
-        }
 
-        int price;
-        String burgerIngredientsInfo;
-        System.out.println("Choose a burger from the menu");
-        String order = br.readLine();
-        switch (order){
-            case "1":
-                price = 5;
-                simpleBurgerQuantity += 1;
-                simpleBurgerTotal = simpleBurgerQuantity*price;
-                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                //return burgerIngredientsInfo;
-                System.out.println(burgerIngredientsInfo);
-                break;
 
-            case "2":
-                //burgerIngredientsInfo = "This burger is made with: " + makeMediumBurger();
-                price = 8;
-                mediumBurgerQuantity += 1;
-                mediumBurgerTotal = mediumBurgerQuantity*price;
-                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                System.out.println(burgerIngredientsInfo);
-                break;
 
-            case "3":
-                //burgerIngredientsInfo = "This burger is made with: " + makeWorkerBurger();
-                price = 10;
-                workerBurgerQuantity += 1;
-                workerBurgerTotal = workerBurgerQuantity*price;
-                totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                System.out.println(burgerIngredientsInfo);
-                break;
-
-            default:
-                System.out.println("Wrong order: choose a burger from the menu");
-                chooseMeatBurger();
-                break;
-        }
-
-    }
 
 
     /**
