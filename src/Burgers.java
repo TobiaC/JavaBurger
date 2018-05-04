@@ -58,129 +58,84 @@ class Burgers {
     }
 
 
-    /**
-     *
-     *
-     *
-     * MODIFY totalNormalAmount: update the current total price
-     * MODIFY simpleBurgerQuantity
-     *        mediumBurgerQuantity
-     *        workerBurgerQuantity: update the quantity of each burger
-     */
+//    /**
+//     *
+//     *
+//     *
+//     * MODIFY totalNormalAmount: update the current total price
+//     * MODIFY simpleBurgerQuantity
+//     *        mediumBurgerQuantity
+//     *        workerBurgerQuantity: update the quantity of each burger
+//     */
+//
+//
+//
 
 
 
+//    /**
+//     *
+//     * @return String: order summary of the normal order
+//     * MODIFY totalNormalAmount: update the current total amount
+//     */
+//    String orderSummaryNormal (){
+//        String summary = "MEAT BURGERS";
+//        if (simpleBurgerQuantity > 0){
+//            summary += "\n" + simpleBurgerQuantity + " simple burgers";
+//        }
+//        if (mediumBurgerQuantity > 0) {
+//            summary += "\n" + mediumBurgerQuantity + " medium burgers";
+//        }
+//        if (workerBurgerQuantity > 0) {
+//            summary += "\n" + workerBurgerQuantity + " worker burgers";
+//        }
+//        if (simpleBurgerQuantity == 0 && mediumBurgerQuantity == 0 && workerBurgerQuantity == 0){
+//            summary += "\nNo meat burgers";
+//        }
+//        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
+//        return summary + "\n";
+//    }
+//
+//    /**
+//     *
+//     * MODIFY totalVegAmount: update the current total price
+//     * MODIFY simpleVegBurgerQuantity
+//     *        mediumVegBurgerQuantity
+//     *        workerVegBurgerQuantity: update the quantity of each burger
+//     */
+//
 
-
-
-    /**
-     *
-     * @return String: order summary of the normal order
-     * MODIFY totalNormalAmount: update the current total amount
-     */
-    String orderSummaryNormal (){
-        String summary = "MEAT BURGERS";
-        if (simpleBurgerQuantity > 0){
-            summary += "\n" + simpleBurgerQuantity + " simple burgers";
-        }
-        if (mediumBurgerQuantity > 0) {
-            summary += "\n" + mediumBurgerQuantity + " medium burgers";
-        }
-        if (workerBurgerQuantity > 0) {
-            summary += "\n" + workerBurgerQuantity + " worker burgers";
-        }
-        if (simpleBurgerQuantity == 0 && mediumBurgerQuantity == 0 && workerBurgerQuantity == 0){
-            summary += "\nNo meat burgers";
-        }
-        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-        return summary + "\n";
-    }
-
-    /**
-     *
-     * MODIFY totalVegAmount: update the current total price
-     * MODIFY simpleVegBurgerQuantity
-     *        mediumVegBurgerQuantity
-     *        workerVegBurgerQuantity: update the quantity of each burger
-     */
-
-    void chooseVeggyBurger() throws IOException {
-        for (int i = 0; i < Burgers.veggyBurgersNames.length; i++) {
-            String burgerMenu = Burgers.veggyBurgersNames[i] + "\n " + Burgers.veggyBurgersIngredients[i];
-            System.out.println(burgerMenu);
-        }
-
-        int price;
-        String burgerIngredientsInfo;
-        System.out.println("Choose a burger from the menu");
-        String order = br.readLine();
-        switch (order){
-            case "1":
-                //burgerIngredientsInfo = "This burger is made with: " + makeSimpleVegBurger();
-                price = 3;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                simpleVegBurgerQuantity += 1;
-                simpleVegBurgerTotal = simpleVegBurgerQuantity*price;
-                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
-                System.out.println(burgerIngredientsInfo);
-
-
-            case "2":
-                //burgerIngredientsInfo = "This burger is made with: " + makeMediumVegBurger();
-                price = 6;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                mediumVegBurgerQuantity += 1;
-                mediumVegBurgerTotal = mediumVegBurgerQuantity*price;
-                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
-                System.out.println(burgerIngredientsInfo);
-
-
-            case "3":
-                //burgerIngredientsInfo = "This burger is made with: " + makeWorkerVegBurger();
-                price = 8;
-                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-                workerVegBurgerQuantity += 1;
-                workerVegBurgerTotal = workerVegBurgerQuantity*price;
-                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
-                System.out.println(burgerIngredientsInfo);
-
-            default:
-                System.out.println("Wrong order: choose a burger from the menu");
-                chooseVeggyBurger();
-        }
-    }
-
-    /**
-     *
-     * @return String: order summary of the veg order
-     * MODIFY totalVegAmount: update the current total amount
-     */
-    String orderSummaryVeg (){
-        String summary = "VEGGY BURGERS";
-        if (simpleVegBurgerQuantity  > 0) {
-            summary += "\n" + simpleVegBurgerQuantity + " simple veg burgers";
-        }
-        if (mediumVegBurgerQuantity > 0) {
-            summary += "\n" + mediumVegBurgerQuantity + " medium veg burgers";
-        }
-        if (workerVegBurgerQuantity > 0) {
-            summary += "\n" + workerVegBurgerQuantity + " worker veg burgers";
-        }
-        if (simpleVegBurgerQuantity == 0 && mediumVegBurgerQuantity == 0 && workerVegBurgerQuantity == 0){
-            summary += "\nNo veg burgers";
-        }
-        totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
-        return summary+ "\n";
-
-    }
-
-    /**
-     *
-     * @return int: total burger quantity
-     */
-
-    int burgerQuantityOfSimpleBurgers(){            //we need this method to apply the discount
-        return simpleBurgerQuantity + simpleVegBurgerQuantity;
-}
+//    /**
+//     *
+//     * @return String: order summary of the veg order
+//     * MODIFY totalVegAmount: update the current total amount
+//     */
+//    String orderSummaryVeg (){
+//        String summary = "VEGGY BURGERS";
+//        if (simpleVegBurgerQuantity  > 0) {
+//            summary += "\n" + simpleVegBurgerQuantity + " simple veg burgers";
+//        }
+//        if (mediumVegBurgerQuantity > 0) {
+//            summary += "\n" + mediumVegBurgerQuantity + " medium veg burgers";
+//        }
+//        if (workerVegBurgerQuantity > 0) {
+//            summary += "\n" + workerVegBurgerQuantity + " worker veg burgers";
+//        }
+//        if (simpleVegBurgerQuantity == 0 && mediumVegBurgerQuantity == 0 && workerVegBurgerQuantity == 0){
+//            summary += "\nNo veg burgers";
+//        }
+//        totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
+//        return summary+ "\n";
+//
+//    }
+//
+//    /**
+//     *
+//     * @return int: total burger quantity
+//     */
+//
+//    int burgerQuantityOfSimpleBurgers(){            //we need this method to apply the discount
+//        return simpleBurgerQuantity + simpleVegBurgerQuantity;
+//}
 
 }//class

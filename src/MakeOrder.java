@@ -9,7 +9,7 @@ class MakeOrder {
     private static Drinks drink = new Drinks();
     private int discount=0;
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private int total;
+    int total;
 
     private int simpleBurgerQuantity;
     private int mediumBurgerQuantity;
@@ -44,10 +44,10 @@ class MakeOrder {
                 break;
 
             case "no":
-                String orderSummaryVeg = burger.orderSummaryVeg();
-                String orderSummaryNormal = burger.orderSummaryNormal();
-                String summary = "Your order is:\n" + "\n" + orderSummaryVeg + "\n" + orderSummaryNormal;
-                System.out.println(summary);
+                //String orderSummaryVeg = burger.orderSummaryVeg();
+                //String orderSummaryNormal = burger.orderSummaryNormal();
+                //String summary = "Your order is:\n" + "\n" + orderSummaryVeg + "\n" + orderSummaryNormal;
+                //System.out.println(summary);
                 int total = totalVegAmount + totalNormalAmount;
                 System.out.println("The current total amount of your order is: " + total + "$");
                 orderDrink();
@@ -75,40 +75,82 @@ class MakeOrder {
         }
     }
 
-    void simpleBurgerChoosen(){
-
+    void simpleBurgerChosen(String whichBurger) throws  IOException{
         String burgerIngredientsInfo;
-        price = 5;
-        simpleBurgerQuantity += 1;
-        simpleBurgerTotal = simpleBurgerQuantity*price;
-        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-        System.out.println(burgerIngredientsInfo);
+        System.out.println("How many?");
+        String quantity = br.readLine();
+        int burgerQuantity = Integer.parseInt(quantity);
+
+       if (whichBurger.equals("meatBurger")) {
+           price = 5;
+           simpleBurgerQuantity += burgerQuantity;
+           simpleBurgerTotal = simpleBurgerQuantity * price;
+           totalNormalAmount = simpleBurgerTotal + mediumBurgerTotal + workerBurgerTotal;
+           burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+           System.out.println(burgerIngredientsInfo);
+
+       } else if (whichBurger.equals("vegBurger")){
+           price = 3;
+           burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+           simpleVegBurgerQuantity += burgerQuantity;
+           simpleVegBurgerTotal = simpleVegBurgerQuantity*price;
+           totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
+           System.out.println(burgerIngredientsInfo);
+       }
+       total = totalNormalAmount + totalVegAmount;
     }
 
-    void mediumBurgerChoosen(){
-
+    void mediumBurgerChosen(String whichBurger) throws IOException {
         String burgerIngredientsInfo;
-        price = 8;
-        mediumBurgerQuantity += 1;
-        mediumBurgerTotal = mediumBurgerQuantity*price;
-        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-        System.out.println(burgerIngredientsInfo);
+        System.out.println("How many?");
+        String quantity = br.readLine();
+        int burgerQuantity = Integer.parseInt(quantity);
 
-    }
+        if (whichBurger.equals("meatBurger")) {
 
-    void workerBurgerChoosen(){
+            price = 8;
+            mediumBurgerQuantity += burgerQuantity;
+            mediumBurgerTotal = mediumBurgerQuantity * price;
+            totalNormalAmount = simpleBurgerTotal + mediumBurgerTotal + workerBurgerTotal;
+            burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+            System.out.println(burgerIngredientsInfo);
 
-        String burgerIngredientsInfo;
-        price = 10;
-        workerBurgerQuantity += 1;
-        workerBurgerTotal = workerBurgerQuantity*price;
-        totalNormalAmount = simpleBurgerTotal+mediumBurgerTotal+workerBurgerTotal;
-        burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
-        System.out.println(burgerIngredientsInfo);
+        } else if (whichBurger.equals("vegBurger")) {
+            price = 6;
+            burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+            mediumVegBurgerQuantity += burgerQuantity;
+            mediumVegBurgerTotal = mediumVegBurgerQuantity*price;
+            totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
+            System.out.println(burgerIngredientsInfo);
+             }
+        total = totalNormalAmount + totalVegAmount;
+        }
 
-    }
+        void workerBurgerChosen (String whichBurger) throws IOException{
+            String burgerIngredientsInfo;
+            System.out.println("How many?");
+            String quantity = br.readLine();
+            int burgerQuantity = Integer.parseInt(quantity);
+
+            if(whichBurger.equals("meatBurger")) {
+                price = 10;
+                workerBurgerQuantity += burgerQuantity;
+                workerBurgerTotal = workerBurgerQuantity * price;
+                totalNormalAmount = simpleBurgerTotal + mediumBurgerTotal + workerBurgerTotal;
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+                System.out.println(burgerIngredientsInfo);
+
+            } else if(whichBurger.equals("vegBurger")){
+                price = 8;
+                burgerIngredientsInfo = "\nThe price of the single burger is: " + price + "$";
+                workerVegBurgerQuantity += burgerQuantity;
+                workerVegBurgerTotal = workerVegBurgerQuantity*price;
+                totalVegAmount = simpleVegBurgerTotal + mediumVegBurgerTotal + workerVegBurgerTotal;
+                System.out.println(burgerIngredientsInfo);
+            }
+            total = totalNormalAmount + totalVegAmount;
+        }
+
     /**
      *
      * @throws IOException allows String input
@@ -190,14 +232,14 @@ class MakeOrder {
 
             case "no":
 
-                Calendar calendar = Calendar.getInstance();
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
-                if (dayOfWeek==5) {
-                     discount = burger.burgerQuantityOfSimpleBurgers() * 2;
-                     System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
-                     System.out.println("Your total discount is: " + discount +"$");
-                }
+//                Calendar calendar = Calendar.getInstance();
+//                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+//
+//                if (dayOfWeek==5) {
+//                     discount = burger.burgerQuantityOfSimpleBurgers() * 2;
+//                     System.out.println("Today there's a discount of 2$ on every Simple Meat/Veggy Burger!");
+//                     System.out.println("Your total discount is: " + discount +"$");
+//                }
 
                 total = totalVegAmount + totalNormalAmount + drink.drinkOrderSummary() - discount;
 
